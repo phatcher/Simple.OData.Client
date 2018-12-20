@@ -470,6 +470,7 @@ namespace Simple.OData.Client
         {
             return this.Link<IDictionary<string, object>>(this.Command, linkName);
         }
+
         /// <summary>
         /// Navigates to the linked entity.
         /// </summary>
@@ -484,16 +485,17 @@ namespace Simple.OData.Client
         /// Executes the OData function or action.
         /// </summary>
         /// <returns>Execution result task.</returns>
-        public Task ExecuteAsync()
-        {
-            return _client.ExecuteAsync(_command, CancellationToken.None);
-        }
+        //public Task ExecuteAsync()
+        //{
+        //    return _client.ExecuteAsync(_command, CancellationToken.None);
+        //}
+
         /// <summary>
         /// Executes the OData function or action.
         /// </summary>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Execution result task.</returns>
-        public Task ExecuteAsync(CancellationToken cancellationToken)
+        public Task ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return _client.ExecuteAsync(_command, cancellationToken);
         }
@@ -502,10 +504,13 @@ namespace Simple.OData.Client
         /// Executes the OData function or action and returns a single item.
         /// </summary>
         /// <returns>Execution result.</returns>
-        public Task<T> ExecuteAsSingleAsync()
-        {
-            return ExecuteAsSingleAsync(CancellationToken.None);
-        }
+        //public Task<T> ExecuteAsSingleAsync()
+        //{
+        //    return FilterAndTypeColumnsAsync(
+        //        _client.ExecuteAsSingleAsync(_command, CancellationToken.None),
+        //        _command.SelectedColumns, _command.DynamicPropertiesContainerName);
+        //}
+
         /// <summary>
         /// Executes the OData function or action and returns a single item.
         /// </summary>
@@ -519,7 +524,7 @@ namespace Simple.OData.Client
         /// </summary>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Execution result.</returns>
-        public Task<T> ExecuteAsSingleAsync(CancellationToken cancellationToken)
+        public Task<T> ExecuteAsSingleAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return FilterAndTypeColumnsAsync(
                 _client.ExecuteAsSingleAsync(_command, cancellationToken),
@@ -539,18 +544,19 @@ namespace Simple.OData.Client
         /// Executes the OData function or action and returns enumerable result.
         /// </summary>
         /// <returns>Execution result.</returns>
-        public Task<IEnumerable<T>> ExecuteAsEnumerableAsync()
-        {
-            return FilterAndTypeColumnsAsync(
-                _client.ExecuteAsEnumerableAsync(_command, CancellationToken.None),
-                _command.SelectedColumns, _command.DynamicPropertiesContainerName);
-        }
+        //public Task<IEnumerable<T>> ExecuteAsEnumerableAsync()
+        //{
+        //    return FilterAndTypeColumnsAsync(
+        //        _client.ExecuteAsEnumerableAsync(_command, CancellationToken.None),
+        //        _command.SelectedColumns, _command.DynamicPropertiesContainerName);
+        //}
+
         /// <summary>
         /// Executes the OData function or action and returns enumerable result.
         /// </summary>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Execution result.</returns>
-        public Task<IEnumerable<T>> ExecuteAsEnumerableAsync(CancellationToken cancellationToken)
+        public Task<IEnumerable<T>> ExecuteAsEnumerableAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return FilterAndTypeColumnsAsync(
                 _client.ExecuteAsEnumerableAsync(_command, cancellationToken),
@@ -561,16 +567,17 @@ namespace Simple.OData.Client
         /// Executes the OData function or action and returns scalar result.
         /// </summary>
         /// <returns>Execution result.</returns>
-        public Task<U> ExecuteAsScalarAsync<U>()
-        {
-            return _client.ExecuteAsScalarAsync<U>(_command, CancellationToken.None);
-        }
+        //public Task<U> ExecuteAsScalarAsync<U>()
+        //{
+        //    return _client.ExecuteAsScalarAsync<U>(_command, CancellationToken.None);
+        //}
+
         /// <summary>
         /// Executes the OData function or action and returns scalar result.
         /// </summary>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Execution result.</returns>
-        public Task<U> ExecuteAsScalarAsync<U>(CancellationToken cancellationToken)
+        public Task<U> ExecuteAsScalarAsync<U>(CancellationToken cancellationToken = default(CancellationToken))
         {
             return _client.ExecuteAsScalarAsync<U>(_command, cancellationToken);
         }
@@ -579,10 +586,10 @@ namespace Simple.OData.Client
         /// Executes the OData function and returns an array.
         /// </summary>
         /// <returns>Execution result.</returns>
-        public Task<U[]> ExecuteAsArrayAsync<U>()
-        {
-            return ExecuteAsArrayAsync<U>(CancellationToken.None);
-        }
+        //public Task<U[]> ExecuteAsArrayAsync<U>()
+        //{
+        //    return ExecuteAsArrayAsync<U>(CancellationToken.None);
+        //}
 
         /// <summary>
         /// Executes the OData function and returns an array.
@@ -598,7 +605,7 @@ namespace Simple.OData.Client
         /// </summary>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Execution result.</returns>
-        public Task<U[]> ExecuteAsArrayAsync<U>(CancellationToken cancellationToken)
+        public Task<U[]> ExecuteAsArrayAsync<U>(CancellationToken cancellationToken = default(CancellationToken))
         {
             return _client.ExecuteAsArrayAsync<U>(_command, cancellationToken);
         }
@@ -617,16 +624,17 @@ namespace Simple.OData.Client
         /// Gets the OData command text.
         /// </summary>
         /// <returns>The command text.</returns>
-        public Task<string> GetCommandTextAsync()
-        {
-            return GetCommandTextAsync(CancellationToken.None);
-        }
+        //public Task<string> GetCommandTextAsync()
+        //{
+        //    return GetCommandTextAsync(CancellationToken.None);
+        //}
+
         /// <summary>
         /// Gets the OData command text.
         /// </summary>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The command text.</returns>
-        public Task<string> GetCommandTextAsync(CancellationToken cancellationToken)
+        public Task<string> GetCommandTextAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.Command.GetCommandTextAsync(cancellationToken);
         }

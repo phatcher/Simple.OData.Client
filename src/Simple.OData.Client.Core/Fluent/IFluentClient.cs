@@ -11,6 +11,7 @@ namespace Simple.OData.Client
     /// Provides access to OData operations in a fluent style.
     /// </summary>
     /// <typeparam name="T">The entity type.</typeparam>
+    /// <typeparam name="FT"></typeparam>
     public interface IFluentClient<T, FT>
         where T : class
     {
@@ -27,18 +28,21 @@ namespace Simple.OData.Client
         /// <param name="properties">The media content properties.</param>
         /// <returns>Self.</returns>
         FT WithMedia(IEnumerable<string> properties);
+
         /// <summary>
         /// Sets the container for media stream content to be retrieved or updated together with standard entity properties.
         /// </summary>
         /// <param name="properties">The media content properties.</param>
         /// <returns>Self.</returns>
         FT WithMedia(params string[] properties);
+
         /// <summary>
         /// Sets the container for media stream content to be retrieved or updated together with standard entity properties.
         /// </summary>
         /// <param name="properties">The media content properties.</param>
         /// <returns>Self.</returns>
         FT WithMedia(params ODataExpression[] properties);
+
         /// <summary>
         /// Sets the container for media stream content to be retrieved or updated together with standard entity properties.
         /// </summary>
@@ -77,12 +81,14 @@ namespace Simple.OData.Client
         /// <param name="filter">The filter.</param>
         /// <returns>Self.</returns>
         FT Filter(string filter);
+
         /// <summary>
         /// Sets the specified OData filter.
         /// </summary>
         /// <param name="expression">The filter expression.</param>
         /// <returns>Self.</returns>
         FT Filter(ODataExpression expression);
+
         /// <summary>
         /// Sets the specified OData filter.
         /// </summary>
@@ -103,12 +109,14 @@ namespace Simple.OData.Client
         /// <param name="functionName">Name of the function.</param>
         /// <returns>Self.</returns>
         FT Function(string functionName);
+
         /// <summary>
         /// Sets the OData function name.
         /// </summary>
         /// <param name="functionName">Name of the function.</param>
         /// <returns>Self.</returns>
         IBoundClient<U> Function<U>(string functionName) where U : class;
+
         /// <summary>
         /// Sets the OData action name.
         /// </summary>
@@ -226,42 +234,49 @@ namespace Simple.OData.Client
         /// <param name="columns">The sort columns.</param>
         /// <returns>Self.</returns>
         FT OrderBy(params string[] columns);
+
         /// <summary>
         /// Sorts the result by the specified columns in ascending order.
         /// </summary>
         /// <param name="columns">The sort columns.</param>
         /// <returns>Self.</returns>
         FT OrderBy(params ODataExpression[] columns);
+
         /// <summary>
         /// Sorts the result by the specified columns in ascending order.
         /// </summary>
         /// <param name="expression">The expression for the sort columns.</param>
         /// <returns>Self.</returns>
         FT OrderBy(Expression<Func<T, object>> expression);
+
         /// <summary>
         /// Sorts the result by the specified columns in ascending order.
         /// </summary>
         /// <param name="expression">The expression for the sort columns.</param>
         /// <returns>Self.</returns>
         FT ThenBy(Expression<Func<T, object>> expression);
+
         /// <summary>
         /// Sorts the result by the specified columns in descending order.
         /// </summary>
         /// <param name="columns">The sort columns.</param>
         /// <returns>Self.</returns>
         FT OrderByDescending(params string[] columns);
+
         /// <summary>
         /// Sorts the result by the specified columns in descending order.
         /// </summary>
         /// <param name="columns">The sort columns.</param>
         /// <returns>Self.</returns>
         FT OrderByDescending(params ODataExpression[] columns);
+
         /// <summary>
         /// Sorts the result by the specified columns in descending order.
         /// </summary>
         /// <param name="expression">The expression for the sort columns.</param>
         /// <returns>Self.</returns>
         FT OrderByDescending(Expression<Func<T, object>> expression);
+
         /// <summary>
         /// Sorts the result by the specified columns in descending order.
         /// </summary>
@@ -275,18 +290,21 @@ namespace Simple.OData.Client
         /// <param name="queryOptions">The custom query options string.</param>
         /// <returns>Self.</returns>
         FT QueryOptions(string queryOptions);
+
         /// <summary>
         /// Sets the custom query options.
         /// </summary>
         /// <param name="queryOptions">The key/value collection of custom query options.</param>
         /// <returns>Self.</returns>
         FT QueryOptions(IDictionary<string, object> queryOptions);
+
         /// <summary>
         /// Sets the custom query options.
         /// </summary>
         /// <param name="expression">The custom query options expression.</param>
         /// <returns>Self.</returns>
         FT QueryOptions(ODataExpression expression);
+
         /// <summary>
         /// Sets the custom query options.
         /// </summary>
@@ -299,18 +317,21 @@ namespace Simple.OData.Client
         /// </summary>
         /// <returns>Self.</returns>
         IMediaClient Media();
+
         /// <summary>
         /// Selects retrieval of a named media stream.
         /// </summary>
         /// <param name="streamName">The media stream name.</param>
         /// <returns>Self.</returns>
         IMediaClient Media(string streamName);
+
         /// <summary>
         /// Selects retrieval of a named media stream.
         /// </summary>
         /// <param name="expression">The media stream name expression.</param>
         /// <returns>Self.</returns>
         IMediaClient Media(ODataExpression expression);
+
         /// <summary>
         /// Selects retrieval of a named media stream.
         /// </summary>
@@ -331,6 +352,7 @@ namespace Simple.OData.Client
         /// <param name="linkName">Name of the link.</param>
         /// <returns>Self.</returns>
         IBoundClient<U> NavigateTo<U>(string linkName = null) where U : class;
+
         /// <summary>
         /// Navigates to the linked entity.
         /// </summary>
@@ -338,6 +360,7 @@ namespace Simple.OData.Client
         /// <param name="expression">The expression for the link.</param>
         /// <returns>Self.</returns>
         IBoundClient<U> NavigateTo<U>(Expression<Func<T, U>> expression) where U : class;
+
         /// <summary>
         /// Navigates to the linked entity.
         /// </summary>
@@ -345,6 +368,7 @@ namespace Simple.OData.Client
         /// <param name="expression">The expression for the link.</param>
         /// <returns>Self.</returns>
         IBoundClient<U> NavigateTo<U>(Expression<Func<T, IEnumerable<U>>> expression) where U : class;
+
         /// <summary>
         /// Navigates to the linked entity.
         /// </summary>
@@ -352,6 +376,7 @@ namespace Simple.OData.Client
         /// <param name="expression">The expression for the link.</param>
         /// <returns>Self.</returns>
         IBoundClient<U> NavigateTo<U>(Expression<Func<T, IList<U>>> expression) where U : class;
+
         /// <summary>
         /// Navigates to the linked entity.
         /// </summary>
@@ -359,6 +384,7 @@ namespace Simple.OData.Client
         /// <param name="expression">The expression for the link.</param>
         /// <returns>Self.</returns>
         IBoundClient<U> NavigateTo<U>(Expression<Func<T, ISet<U>>> expression) where U : class;
+
         /// <summary>
         /// Navigates to the linked entity.
         /// </summary>
@@ -366,6 +392,7 @@ namespace Simple.OData.Client
         /// <param name="expression">The expression for the link.</param>
         /// <returns>Self.</returns>
         IBoundClient<U> NavigateTo<U>(Expression<Func<T, HashSet<U>>> expression) where U : class;
+
         /// <summary>
         /// Navigates to the linked entity.
         /// </summary>
@@ -373,12 +400,14 @@ namespace Simple.OData.Client
         /// <param name="expression">The expression for the link.</param>
         /// <returns>Self.</returns>
         IBoundClient<U> NavigateTo<U>(Expression<Func<T, U[]>> expression) where U : class;
+
         /// <summary>
         /// Navigates to the linked entity.
         /// </summary>
         /// <param name="linkName">Name of the link.</param>
         /// <returns>Self.</returns>
         IBoundClient<IDictionary<string, object>> NavigateTo(string linkName);
+
         /// <summary>
         /// Navigates to the linked entity.
         /// </summary>
@@ -390,19 +419,21 @@ namespace Simple.OData.Client
         /// Executes the OData function or action.
         /// </summary>
         /// <returns>Execution result.</returns>
-        Task ExecuteAsync();
+        //Task ExecuteAsync();
+
         /// <summary>
         /// Executes the OData function or action.
         /// </summary>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Action execution result.</returns>
-        Task ExecuteAsync(CancellationToken cancellationToken);
+        Task ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Executes the OData function or action.
         /// </summary>
         /// <returns>Execution result.</returns>
-        Task<T> ExecuteAsSingleAsync();
+        //Task<T> ExecuteAsSingleAsync();
+
         /// <summary>
         /// Executes the OData function or action.
         /// </summary>
@@ -413,7 +444,7 @@ namespace Simple.OData.Client
         /// </summary>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Action execution result.</returns>
-        Task<T> ExecuteAsSingleAsync(CancellationToken cancellationToken);
+        Task<T> ExecuteAsSingleAsync(CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Executes the OData function or action.
         /// </summary>
@@ -425,34 +456,36 @@ namespace Simple.OData.Client
         /// Executes the OData function or action and returns collection.
         /// </summary>
         /// <returns>Action execution result.</returns>
-        Task<IEnumerable<T>> ExecuteAsEnumerableAsync();
+        //Task<IEnumerable<T>> ExecuteAsEnumerableAsync();
+
         /// <summary>
         /// Executes the OData function or action and returns collection.
         /// </summary>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Execution result.</returns>
-        Task<IEnumerable<T>> ExecuteAsEnumerableAsync(CancellationToken cancellationToken);
+        Task<IEnumerable<T>> ExecuteAsEnumerableAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Executes the OData function or action and returns scalar result.
         /// </summary>
         /// <typeparam name="U">The type of the result.</typeparam>
         /// <returns>Execution result.</returns>
-        Task<U> ExecuteAsScalarAsync<U>();
+        //Task<U> ExecuteAsScalarAsync<U>();
+
         /// <summary>
         /// Executes the OData function or action and returns scalar result.
         /// </summary>
         /// <typeparam name="U">The type of the result.</typeparam>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Action execution result.</returns>
-        Task<U> ExecuteAsScalarAsync<U>(CancellationToken cancellationToken);
+        Task<U> ExecuteAsScalarAsync<U>(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Executes the OData function or action and returns an array.
         /// </summary>
         /// <typeparam name="U">The type of the result array.</typeparam>
         /// <returns>Execution result.</returns>
-        Task<U[]> ExecuteAsArrayAsync<U>();
+        //Task<U[]> ExecuteAsArrayAsync<U>();
 
         /// <summary>
         /// Executes the OData function or action and returns an array.
@@ -466,7 +499,7 @@ namespace Simple.OData.Client
         /// <typeparam name="U">The type of the result array.</typeparam>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Action execution result.</returns>
-        Task<U[]> ExecuteAsArrayAsync<U>(CancellationToken cancellationToken);
+        Task<U[]> ExecuteAsArrayAsync<U>(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Executes the OData function or action and returns an array.
@@ -479,12 +512,13 @@ namespace Simple.OData.Client
         /// Gets the OData command text.
         /// </summary>
         /// <returns>The command text.</returns>
-        Task<string> GetCommandTextAsync();
+        //Task<string> GetCommandTextAsync();
+
         /// <summary>
         /// Gets the OData command text.
         /// </summary>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The command text.</returns>
-        Task<string> GetCommandTextAsync(CancellationToken cancellationToken);
+        Task<string> GetCommandTextAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }

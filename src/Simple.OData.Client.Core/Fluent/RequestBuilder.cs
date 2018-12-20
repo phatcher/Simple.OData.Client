@@ -182,97 +182,97 @@ namespace Simple.OData.Client
             _lazyBatchWriter = batchWriter;
         }
 
-        public Task<IClientWithRequest<T>> FindEntriesAsync()
-        {
-            return FindEntriesAsync(false, CancellationToken.None);
-        }
+        //public Task<IClientWithRequest<T>> FindEntriesAsync()
+        //{
+        //    return FindEntriesAsync(false, CancellationToken.None);
+        //}
 
-        public Task<IClientWithRequest<T>> FindEntriesAsync(CancellationToken cancellationToken)
+        public Task<IClientWithRequest<T>> FindEntriesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return FindEntriesAsync(false, cancellationToken);
         }
 
-        public Task<IClientWithRequest<T>> FindEntriesAsync(bool scalarResult)
-        {
-            return FindEntriesAsync(scalarResult, CancellationToken.None);
-        }
+        //public Task<IClientWithRequest<T>> FindEntriesAsync(bool scalarResult)
+        //{
+        //    return FindEntriesAsync(scalarResult, CancellationToken.None);
+        //}
 
-        public async Task<IClientWithRequest<T>> FindEntriesAsync(bool scalarResult, CancellationToken cancellationToken)
+        public async Task<IClientWithRequest<T>> FindEntriesAsync(bool scalarResult, CancellationToken cancellationToken = default(CancellationToken))
         {
             var requestBuilder = new RequestBuilder(_command, _session, _lazyBatchWriter);
             return new ClientWithRequest<T>(await requestBuilder.GetRequestAsync(scalarResult, cancellationToken).ConfigureAwait(false), _session);
         }
 
-        public Task<IClientWithRequest<T>> FindEntriesAsync(ODataFeedAnnotations annotations)
-        {
-            return FindEntriesAsync(annotations, CancellationToken.None);
-        }
+        //public Task<IClientWithRequest<T>> FindEntriesAsync(ODataFeedAnnotations annotations)
+        //{
+        //    return FindEntriesAsync(annotations, CancellationToken.None);
+        //}
 
-        public async Task<IClientWithRequest<T>> FindEntriesAsync(ODataFeedAnnotations annotations, CancellationToken cancellationToken)
+        public async Task<IClientWithRequest<T>> FindEntriesAsync(ODataFeedAnnotations annotations, CancellationToken cancellationToken = default(CancellationToken))
         {
             var requestBuilder = new RequestBuilder(_command.WithCount(), _session, _lazyBatchWriter);
             return new ClientWithRequest<T>(await requestBuilder.GetRequestAsync(false, cancellationToken).ConfigureAwait(false), _session);
         }
 
-        public Task<IClientWithRequest<T>> FindEntryAsync()
-        {
-            return FindEntryAsync(CancellationToken.None);
-        }
+        //public Task<IClientWithRequest<T>> FindEntryAsync()
+        //{
+        //    return FindEntryAsync(CancellationToken.None);
+        //}
 
-        public async Task<IClientWithRequest<T>> FindEntryAsync(CancellationToken cancellationToken)
+        public async Task<IClientWithRequest<T>> FindEntryAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var requestBuilder = new RequestBuilder(_command, _session, _lazyBatchWriter);
             return new ClientWithRequest<T>(await requestBuilder.GetRequestAsync(false, cancellationToken), _session);
         }
 
-        public Task<IClientWithRequest<T>> InsertEntryAsync()
-        {
-            return InsertEntryAsync(true, CancellationToken.None);
-        }
+        //public Task<IClientWithRequest<T>> InsertEntryAsync()
+        //{
+        //    return InsertEntryAsync(true, CancellationToken.None);
+        //}
 
-        public Task<IClientWithRequest<T>> InsertEntryAsync(bool resultRequired)
-        {
-            return InsertEntryAsync(resultRequired, CancellationToken.None);
-        }
+        //public Task<IClientWithRequest<T>> InsertEntryAsync(bool resultRequired)
+        //{
+        //    return InsertEntryAsync(resultRequired, CancellationToken.None);
+        //}
 
-        public Task<IClientWithRequest<T>> InsertEntryAsync(CancellationToken cancellationToken)
+        public Task<IClientWithRequest<T>> InsertEntryAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return InsertEntryAsync(true, cancellationToken);
         }
 
-        public async Task<IClientWithRequest<T>> InsertEntryAsync(bool resultRequired, CancellationToken cancellationToken)
+        public async Task<IClientWithRequest<T>> InsertEntryAsync(bool resultRequired, CancellationToken cancellationToken = default(CancellationToken))
         {
             var requestBuilder = new RequestBuilder(_command, _session, _lazyBatchWriter);
             return new ClientWithRequest<T>(await requestBuilder.InsertRequestAsync(resultRequired, cancellationToken).ConfigureAwait(false), _session);
         }
 
-        public Task<IClientWithRequest<T>> UpdateEntryAsync()
-        {
-            return UpdateEntryAsync(true, CancellationToken.None);
-        }
+        //public Task<IClientWithRequest<T>> UpdateEntryAsync()
+        //{
+        //    return UpdateEntryAsync(true, CancellationToken.None);
+        //}
 
-        public Task<IClientWithRequest<T>> UpdateEntryAsync(bool resultRequired)
-        {
-            return UpdateEntryAsync(resultRequired, CancellationToken.None);
-        }
+        //public Task<IClientWithRequest<T>> UpdateEntryAsync(bool resultRequired)
+        //{
+        //    return UpdateEntryAsync(resultRequired, CancellationToken.None);
+        //}
 
-        public Task<IClientWithRequest<T>> UpdateEntryAsync(CancellationToken cancellationToken)
+        public Task<IClientWithRequest<T>> UpdateEntryAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return UpdateEntryAsync(true, cancellationToken);
         }
 
-        public async Task<IClientWithRequest<T>> UpdateEntryAsync(bool resultRequired, CancellationToken cancellationToken)
+        public async Task<IClientWithRequest<T>> UpdateEntryAsync(bool resultRequired, CancellationToken cancellationToken = default(CancellationToken))
         {
             var requestBuilder = new RequestBuilder(_command, _session, _lazyBatchWriter);
             return new ClientWithRequest<T>(await requestBuilder.UpdateRequestAsync(resultRequired, cancellationToken).ConfigureAwait(false), _session);
         }
 
-        public Task<IClientWithRequest<T>> DeleteEntryAsync()
-        {
-            return DeleteEntryAsync(CancellationToken.None);
-        }
+        //public Task<IClientWithRequest<T>> DeleteEntryAsync()
+        //{
+        //    return DeleteEntryAsync(CancellationToken.None);
+        //}
 
-        public async Task<IClientWithRequest<T>> DeleteEntryAsync(CancellationToken cancellationToken)
+        public async Task<IClientWithRequest<T>> DeleteEntryAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var requestBuilder = new RequestBuilder(_command, _session, _lazyBatchWriter);
             return new ClientWithRequest<T>(await requestBuilder.DeleteRequestAsync(cancellationToken).ConfigureAwait(false), _session);

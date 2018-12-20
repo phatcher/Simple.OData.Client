@@ -33,12 +33,12 @@ namespace Simple.OData.Client
             _responseMessage?.Dispose();
         }
 
-        public Task<Stream> GetResponseStreamAsync()
-        {
-            return GetResponseStreamAsync(CancellationToken.None);
-        }
+        //public Task<Stream> GetResponseStreamAsync()
+        //{
+        //    return GetResponseStreamAsync(CancellationToken.None);
+        //}
 
-        public async Task<Stream> GetResponseStreamAsync(CancellationToken cancellationToken)
+        public async Task<Stream> GetResponseStreamAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             if (_responseMessage.IsSuccessStatusCode && _responseMessage.StatusCode != HttpStatusCode.NoContent &&
                 (_request.Method == RestVerbs.Get || _request.ResultRequired))
@@ -55,22 +55,22 @@ namespace Simple.OData.Client
             }
         }
 
-        public Task<IEnumerable<T>> ReadAsCollectionAsync()
-        {
-            return ReadAsCollectionAsync(CancellationToken.None);
-        }
+        //public Task<IEnumerable<T>> ReadAsCollectionAsync()
+        //{
+        //    return ReadAsCollectionAsync(CancellationToken.None);
+        //}
 
-        public Task<IEnumerable<T>> ReadAsCollectionAsync(CancellationToken cancellationToken)
+        public Task<IEnumerable<T>> ReadAsCollectionAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return ReadAsCollectionAsync(null, CancellationToken.None);
         }
 
-        public Task<IEnumerable<T>> ReadAsCollectionAsync(ODataFeedAnnotations annotations)
-        {
-            return ReadAsCollectionAsync(annotations, CancellationToken.None);
-        }
+        //public Task<IEnumerable<T>> ReadAsCollectionAsync(ODataFeedAnnotations annotations)
+        //{
+        //    return ReadAsCollectionAsync(annotations, CancellationToken.None);
+        //}
 
-        public async Task<IEnumerable<T>> ReadAsCollectionAsync(ODataFeedAnnotations annotations, CancellationToken cancellationToken)
+        public async Task<IEnumerable<T>> ReadAsCollectionAsync(ODataFeedAnnotations annotations, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (_responseMessage.IsSuccessStatusCode && _responseMessage.StatusCode != HttpStatusCode.NoContent &&
                 (_request.Method == RestVerbs.Get || _request.ResultRequired))
@@ -90,12 +90,12 @@ namespace Simple.OData.Client
             }
         }
 
-        public Task<T> ReadAsSingleAsync()
-        {
-            return ReadAsSingleAsync(CancellationToken.None);
-        }
+        //public Task<T> ReadAsSingleAsync()
+        //{
+        //    return ReadAsSingleAsync(CancellationToken.None);
+        //}
 
-        public async Task<T> ReadAsSingleAsync(CancellationToken cancellationToken)
+        public async Task<T> ReadAsSingleAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             if (_responseMessage.IsSuccessStatusCode && _responseMessage.StatusCode != HttpStatusCode.NoContent &&
                 (_request.Method == RestVerbs.Get || _request.ResultRequired))
@@ -113,12 +113,12 @@ namespace Simple.OData.Client
             }
         }
 
-        public Task<U> ReadAsScalarAsync<U>()
-        {
-            return ReadAsScalarAsync<U>(CancellationToken.None);
-        }
+        //public Task<U> ReadAsScalarAsync<U>()
+        //{
+        //    return ReadAsScalarAsync<U>(CancellationToken.None);
+        //}
 
-        public async Task<U> ReadAsScalarAsync<U>(CancellationToken cancellationToken)
+        public async Task<U> ReadAsScalarAsync<U>(CancellationToken cancellationToken = default(CancellationToken))
         {
             if (_responseMessage.IsSuccessStatusCode && _responseMessage.StatusCode != HttpStatusCode.NoContent &&
                 (_request.Method == RestVerbs.Get || _request.ResultRequired))

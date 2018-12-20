@@ -11,18 +11,24 @@ namespace Simple.OData.Client
     {
         HttpResponseMessage ResponseMessage { get; }
 
-        Task<IEnumerable<T>> ReadAsCollectionAsync();
-        Task<IEnumerable<T>> ReadAsCollectionAsync(CancellationToken cancellationToken);
-        Task<IEnumerable<T>> ReadAsCollectionAsync(ODataFeedAnnotations annotations);
-        Task<IEnumerable<T>> ReadAsCollectionAsync(ODataFeedAnnotations annotations, CancellationToken cancellationToken);
+        //Task<IEnumerable<T>> ReadAsCollectionAsync();
 
-        Task<T> ReadAsSingleAsync();
-        Task<T> ReadAsSingleAsync(CancellationToken cancellationToken);
+        Task<IEnumerable<T>> ReadAsCollectionAsync(CancellationToken cancellationToken = default(CancellationToken));
 
-        Task<U> ReadAsScalarAsync<U>();
-        Task<U> ReadAsScalarAsync<U>(CancellationToken cancellationToken);
+        //Task<IEnumerable<T>> ReadAsCollectionAsync(ODataFeedAnnotations annotations);
 
-        Task<Stream> GetResponseStreamAsync();
-        Task<Stream> GetResponseStreamAsync(CancellationToken cancellationToken);
+        Task<IEnumerable<T>> ReadAsCollectionAsync(ODataFeedAnnotations annotations, CancellationToken cancellationToken = default(CancellationToken));
+
+        //Task<T> ReadAsSingleAsync();
+
+        Task<T> ReadAsSingleAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        //Task<U> ReadAsScalarAsync<U>();
+
+        Task<U> ReadAsScalarAsync<U>(CancellationToken cancellationToken = default(CancellationToken));
+
+        //Task<Stream> GetResponseStreamAsync();
+
+        Task<Stream> GetResponseStreamAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }
