@@ -36,12 +36,43 @@ namespace Simple.OData.Client.Tests.Extensions
             public SubclassType[] CompoundCollectionProperty { get; set; }
             public SpatialV3.GeographyPoint PointV3 { get; set; }
             public SpatialV4.GeographyPoint PointV4 { get; set; }
+
+            public IDictionary<string, object> DynamicProperties { get; set; }
         }
 
         class SubclassType
         {
             public string StringProperty { get; set; }
             public int IntProperty { get; set; }
+        }
+
+        class ClassTypeConverter
+        {
+            public static object Convert(IDictionary<string, object> dictionary)
+            {
+                var entity = new ClassType();
+
+                foreach (var kvp in dictionary)
+                {
+                    switch (kvp.Key)
+                    {
+                        case "IntProperty":
+                            entity.IntProperty = (int) kvp.Value;
+                            break;
+
+                        // NB Ignored as standard ToObject also ignores this?
+                        //case "StringField":
+                        //    entity.StringField = kvp.Value as string;
+                        //    break;
+
+                        case "StringProperty":
+                            entity.StringProperty = kvp.Value as string;
+                            break;
+                    }
+                }
+
+                return entity;
+            }
         }
 
         private ITypeCache _typeCache => TypeCaches.TypeCache("test", null);
@@ -124,6 +155,25 @@ namespace Simple.OData.Client.Tests.Extensions
         }
 
         [Fact]
+        public void ToObjectUnknownPropertyWithDynamicType()
+        {
+            var typeCache = new TypeCache(new TypeConverter());
+            typeCache.Register<ClassType>();
+
+            var dict = new Dictionary<string, object>
+            {
+                { "StringProperty", "a" }, 
+                { "IntProperty", 1 },
+                { "UnknownProperty", "u" }
+            };
+
+            var value = dict.ToObject<ClassType>(typeCache);
+            Assert.Equal("a", value.StringProperty);
+            Assert.Equal(1, value.IntProperty);
+            Assert.Equal("u", value.DynamicProperties["UnknownProperty"]);
+        }
+
+        [Fact]
         public void ToObjectPrivateSetter()
         {
             var dict = new Dictionary<string, object>
@@ -150,6 +200,26 @@ namespace Simple.OData.Client.Tests.Extensions
             };
 
             var value = dict.ToObject<ClassType>(_typeCache);
+            Assert.Equal("a", value.StringProperty);
+            Assert.Equal(1, value.IntProperty);
+            // TODO: Why do we ignore fields?
+            Assert.Null(value.StringField);
+        }
+
+        [Fact]
+        public void ToObjectFieldCustomConverter()
+        {
+            var typeCache = new TypeCache(new TypeConverter());
+            typeCache.Converter.RegisterTypeConverter(typeof(ClassType), ClassTypeConverter.Convert);
+
+            var dict = new Dictionary<string, object>
+            {
+                { "StringProperty", "a" }, 
+                { "IntProperty", 1 },
+                { "StringField", "f" }
+            };
+
+            var value = dict.ToObject<ClassType>(typeCache);
             Assert.Equal("a", value.StringProperty);
             Assert.Equal(1, value.IntProperty);
             Assert.Null(value.StringField);

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+
+using Simple.OData.Client.IntegrationTests;
+
 using Xunit;
 
 namespace Simple.OData.Client.Tests
@@ -1076,6 +1079,26 @@ namespace Simple.OData.Client.Tests
                 .ExecuteAsArrayAsync<Airline>();
 
             Assert.Equal("AA", airport.First().AirlineCode);
+        }
+
+        [Fact]
+        public async Task GetPhotoViaConverter()
+        {
+            var settings = new ODataClientSettings
+            {
+                BaseUri = _serviceUri
+            };
+            settings.TypeCache.Converter.RegisterTypeConverter<Photo>(Converters.PhotoConverter);
+
+            var client = new ODataClient(settings);
+
+            var photo = await client
+                .For<Photo>()
+                .Key(1)
+                .FindEntryAsync();
+
+            Assert.Equal(1, photo.Id);
+            Assert.Equal("My Photo 1", photo.Name);
         }
 
         [Fact]
