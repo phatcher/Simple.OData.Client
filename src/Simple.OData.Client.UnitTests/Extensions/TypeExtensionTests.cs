@@ -15,7 +15,7 @@ namespace Simple.OData.Client.Tests
         [Fact]
         public void GetAllProperties_DerivedType()
         {
-            Assert.Equal(2, typeof(Ship).GetAllProperties().Count());
+            Assert.Equal(6, typeof(Ship).GetAllProperties().Count());
         }
 
         [Fact]
@@ -33,7 +33,7 @@ namespace Simple.OData.Client.Tests
         [Fact]
         public void GetDeclaredProperties_DerivedType()
         {
-            Assert.Single(typeof(Ship).GetDeclaredProperties());
+            Assert.Equal(5, typeof(Ship).GetDeclaredProperties().Count());
         }
 
         [Fact]
@@ -60,6 +60,33 @@ namespace Simple.OData.Client.Tests
         {
             Assert.Null(typeof(Ship).GetDeclaredProperty("TransportID"));
             Assert.NotNull(typeof(Ship).GetDeclaredProperty("ShipName"));
+        }
+
+        [Fact]
+        public void GetMappedNames_DerivedType()
+        {
+            var mappings = typeof(Ship).GetMappedPropertiesWithNames().ToList();
+            foreach (var t in mappings)
+            {
+                switch (t.Item1.Name)
+                {
+                    case "TransportID":
+                        Assert.Equal("TransportID", t.Item2);
+                        break;
+
+                    case "ShipName":
+                        Assert.Equal("ShipName", t.Item2);
+                        break;
+
+                    case "DataMapping":
+                        Assert.Equal("Data", t.Item2);
+                        break;
+
+                    case "JsonMapping":
+                        Assert.Equal("Json", t.Item2);
+                        break;
+                }
+            }
         }
     }
 }

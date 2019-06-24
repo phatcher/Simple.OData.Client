@@ -16,7 +16,7 @@ namespace Simple.OData.Client.Tests.Extensions
         [Fact]
         public void GetAllProperties_DerivedType()
         {
-            Assert.Equal(2, _typeCache.GetAllProperties(typeof(Ship)).Count());
+            Assert.Equal(6, _typeCache.GetAllProperties(typeof(Ship)).Count());
         }
 
         [Fact]
@@ -34,7 +34,19 @@ namespace Simple.OData.Client.Tests.Extensions
         [Fact]
         public void GetDeclaredProperties_DerivedType()
         {
-            Assert.Single(_typeCache.GetDeclaredProperties(typeof(Ship)));
+            Assert.Equal(5, _typeCache.GetDeclaredProperties(typeof(Ship)).Count());
+        }
+
+        [Fact]
+        public void GetMappedProperties_BaseType()
+        {
+            Assert.Single(_typeCache.GetMappedProperties(typeof(Transport)));
+        }
+
+        [Fact]
+        public void GetMappedProperties_DerivedType()
+        {
+            Assert.Equal(4, _typeCache.GetMappedProperties(typeof(Ship)).Count());
         }
 
         [Fact]

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 
-using Simple.OData.Client.Extensions;
 using Simple.OData.Client.Tests;
 
 namespace Simple.OData.Client.IntegrationTests
@@ -16,7 +15,7 @@ namespace Simple.OData.Client.IntegrationTests
                 switch (kvp.Key)
                 {
                     case "Id":
-                        TypeCaches.Global.TryConvert(kvp.Value, typeof(int), out var foo);
+                        TypeCaches.TypeCache("uri:default", ODataNameMatchResolver.NotStrict).TryConvert(kvp.Value, typeof(int), out var foo);
                         entity.Id = (int) foo;
                         break;
 

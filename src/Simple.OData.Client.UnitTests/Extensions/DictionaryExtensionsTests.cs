@@ -157,7 +157,7 @@ namespace Simple.OData.Client.Tests.Extensions
         [Fact]
         public void ToObjectUnknownPropertyWithDynamicType()
         {
-            var typeCache = new TypeCache(new TypeConverter());
+            var typeCache = new TypeCache(new TypeConverter(), ODataNameMatchResolver.NotStrict);
             typeCache.Register<ClassType>();
 
             var dict = new Dictionary<string, object>
@@ -209,7 +209,7 @@ namespace Simple.OData.Client.Tests.Extensions
         [Fact]
         public void ToObjectFieldCustomConverter()
         {
-            var typeCache = new TypeCache(new TypeConverter());
+            var typeCache = new TypeCache(new TypeConverter(), ODataNameMatchResolver.NotStrict);
             typeCache.Converter.RegisterTypeConverter(typeof(ClassType), ClassTypeConverter.Convert);
 
             var dict = new Dictionary<string, object>

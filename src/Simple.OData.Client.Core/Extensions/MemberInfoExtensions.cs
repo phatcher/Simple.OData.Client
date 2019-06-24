@@ -41,13 +41,13 @@ namespace Simple.OData.Client.Extensions
             return new MappingInfo
             {
                 IsNotMapped = attributes.IsNotMapped(),
-                MappedName = memberInfo.Name.GetMappedName(attributes)
+                MappedName = attributes.IsNotMapped() ? null : memberInfo.Name.GetMappedName(attributes)
             };
         }
 
         private static bool IsNotMapped(this IList<Attribute> attributes)
         {
-            return attributes.Any(x => x.GetType().Name == "NotMappedAttribute");
+            return attributes.Any(x => x.GetType().Name == "NotMappedAttribute" || x.GetType().Name == "JsonIgnoreAttribute");
         }
 
         private static string GetMappedName(this string name, IList<Attribute> attributes)
@@ -57,6 +57,7 @@ namespace Simple.OData.Client.Extensions
                 "DataAttribute",
                 "DataMemberAttribute",
                 "ColumnAttribute",
+                "JsonPropertyAttribute"
             };
 
             var propertyName = name;
@@ -64,7 +65,7 @@ namespace Simple.OData.Client.Extensions
             var mappingAttribute = attributes.FirstOrDefault(x => supportedAttributeNames.Any(y => x.GetType().Name == y));
             if (mappingAttribute != null)
             {
-                attributeProperty = "Name";
+                attributeProperty = mappingAttribute.GetType().Name == "JsonPropertyAttribute" ? "PropertyName" : "Name";
             }
             else
             {
