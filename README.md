@@ -6,6 +6,12 @@
  <a href="https://gitter.im/simple-odata-client/community"><img src="https://badges.gitter.im/gitterHQ/gitter.png"></a>
 </p>
 
+## NOTICE:
+
+This project is not actively maintained anymore.  Alternatives you may wish to consider:
+* [Microsoft.OData.Client](https://www.nuget.org/packages/Microsoft.OData.Client) ([GitHub](https://github.com/OData/odata.net)) - Microsoft's official OData client library
+* [PanoramicData.OData.Client](https://www.nuget.org/packages/PanoramicData.OData.Client) ([GitHub](https://github.com/panoramicdata/PanoramicData.OData.Client)) - This project's spiritual successor, written by Simple.OData.Client contributors and following the same principles.
+
 ## Introduction
 
 Simple.OData.Client is a multi-platform OData client library supporting .NET 4.x, netstandard 2.0, Android and iOS. The adapter provides a great alternative to WCF Data Services client. It does not require generation of context or entity classes and fits RESTful nature of OData services.
