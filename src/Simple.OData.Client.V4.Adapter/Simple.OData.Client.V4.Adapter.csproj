@@ -18,6 +18,22 @@
 		<PackageTags>$(PackageTags);v4;</PackageTags>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+	  <DefineConstants>$(DefineConstants);ODATA_7</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0|AnyCPU'">
+	  <DefineConstants>$(DefineConstants);ODATA_7</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0|AnyCPU'">
+	  <DefineConstants>$(DefineConstants);ODATA_7</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0|AnyCPU'">
+	  <DefineConstants>$(DefineConstants);ODATA_7</DefineConstants>
+	</PropertyGroup>
 	
 	<ItemGroup>
 		<PackageReference Include="Microsoft.OData.Core" Version="[7.*, 8.0.0)" />

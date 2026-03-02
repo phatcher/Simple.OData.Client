@@ -6,9 +6,10 @@
 This package contains everything you need to connect to OData v4 APIs.
 
 ## Supported Platforms
-This library supports all of the .NET runtimes Microsoft supports as of March 2024. This includes:
+This library supports all of the .NET runtimes Microsoft supports as of March 2026. This includes:
+- .NET 10.0
+- .NET 9.0
 - .NET 8.0
-- .NET 7.0
 - .NET Standard 2.0 (for .NET Framework 4.6.1 and later => .NET Core)
 
 ## Need Help?

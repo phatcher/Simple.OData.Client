@@ -8,9 +8,10 @@ This package contains the complete Simple.OData.Client solution, encompassing al
 Most modern OData APIs will want to use the [Simple.OData.V4.Client package](https://www.nuget.org/packages/Simple.OData.V4.Client), which has a lighter memory footprint. If you only need to support OData v3 and earlier, you can use the [Simple.OData.V3.Client package](https://www.nuget.org/packages/Simple.OData.V3.Client).
 
 ## Supported Platforms
-This library supports all of the .NET runtimes Microsoft supports as of March 2024. This includes:
+This library supports all of the .NET runtimes Microsoft supports as of March 2026. This includes:
+- .NET 10.0
+- .NET 9.0
 - .NET 8.0
-- .NET 7.0
 - .NET Standard 2.0 (for .NET Framework 4.6.1 and later => .NET Core)
 
 ## Need Help?

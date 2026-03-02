@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+        <DocumentationFile>$(DocumentationFile)\$(AssemblyName).xml</DocumentationFile>
+        <RootNamespace>Simple.OData.Client.V4.Adapter</RootNamespace>
+        <StrongNamePublicKey>$(StrongNamePublicKey)</StrongNamePublicKey>
+    </PropertyGroup>
+    <PropertyGroup>
+        <PackageId>Simple.OData.V4.Client.ODataV8</PackageId>
+        <Summary>Simple.OData.Client helps you interact with OData APIs that comply with any version of the OData standard.</Summary>
+        <Description>
+            $(Summary) This package contains everything you need to connect to OData v4 APIs.
+
+            Commonly used types:
+            Simple.OData.Client.ODataClient
+        </Description>
+        <PackageTags>$(PackageTags);v4;</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0|AnyCPU'">
+      <DefineConstants>$(DefineConstants);ODATA_8</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0|AnyCPU'">
+      <DefineConstants>$(DefineConstants);ODATA_8</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0|AnyCPU'">
+      <DefineConstants>$(DefineConstants);ODATA_8</DefineConstants>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.OData.Core" Version="[8.*, 9.0.0)" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Simple.OData.Client.Core\Simple.OData.Client.Core.csproj" />
+    </ItemGroup>
+</Project>

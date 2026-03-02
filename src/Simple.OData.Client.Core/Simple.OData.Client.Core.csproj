@@ -36,6 +36,9 @@
 			<_Parameter1>Simple.OData.Client.V4.Adapter, $(StrongNamePublicKey)</_Parameter1>
 		</AssemblyAttribute>
 		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+			<_Parameter1>Simple.OData.Client.V4.Adapter.V8, $(StrongNamePublicKey)</_Parameter1>
+		</AssemblyAttribute>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
 			<_Parameter1>Simple.OData.Tests.Client, $(StrongNamePublicKey)</_Parameter1>
 		</AssemblyAttribute>
 		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
