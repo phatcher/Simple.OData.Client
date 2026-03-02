@@ -159,7 +159,12 @@ namespace Simple.OData.Client.V3.Adapter
 				}
 			}
 
-			return string.Join("/", [.. exactNames]);
+#if NET9_0_OR_GREATER
+			return string.Join('/', exactNames);
+#else
+			// Not sure why the original copied the array via [.. exactNames]
+			return string.Join("/", exactNames);
+#endif
 		}
 
 		public override bool HasNavigationProperty(string collectionName, string propertyName)

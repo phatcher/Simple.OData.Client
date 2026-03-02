@@ -201,7 +201,13 @@ public class Metadata(IEdmModel model, INameMatchResolver nameMatchResolver, boo
 			}
 		}
 
-		return string.Join("/", [.. exactNames]);
+#if NET9_0_OR_GREATER
+		return string.Join('/', exactNames);
+#else
+		// Not sure why the original copied the list into a new array
+		return string.Join("/", exactNames);
+		//return string.Join("/", [.. exactNames]);
+#endif
 	}
 
 	public override bool HasNavigationProperty(string collectionName, string propertyName)

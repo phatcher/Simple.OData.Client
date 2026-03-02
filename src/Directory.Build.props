@@ -5,7 +5,7 @@
 		<IsTestAssetProject Condition="$(MSBuildProjectName.ToLower().Contains('tests.shared.'))">true</IsTestAssetProject>
 		<IsTestProject Condition="$(MSBuildProjectName.ToLower().Contains('.tests.')) == 'true' AND $(IsTestAssetProject) != 'true'">true</IsTestProject>
 		<IsSampleProject Condition="$(MSBuildProjectName.ToLower().Contains('.samples.'))">true</IsSampleProject>
-		<IsNetCore Condition=" '$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net7.0' OR '$(TargetFramework)' == 'net8.0' ">true</IsNetCore>
+		<IsNetCore Condition=" '$(TargetFramework)' == 'net8.0' OR '$(TargetFramework)' == 'net9.0' OR '$(TargetFramework)' == 'net10.0' ">true</IsNetCore>
 		<IsPrimaryProject Condition=" '$(IsBenchmarkProject)' != 'true' AND '$(IsTestProject)' != 'true' AND '$(IsTestAssetProject)' != 'true' AND '$(IsSampleProject)' != 'true' ">true</IsPrimaryProject>
 
 		<IncludeSource>false</IncludeSource>

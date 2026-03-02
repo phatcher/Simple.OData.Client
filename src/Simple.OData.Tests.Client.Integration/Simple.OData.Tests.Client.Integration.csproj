@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net7.0;net48;</TargetFrameworks>
+        <TargetFrameworks>net48;net8.0;net9.0;net10.0</TargetFrameworks>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 	</PropertyGroup>
@@ -22,5 +21,4 @@
 		<ProjectReference Include="..\Simple.OData.Client.V3.Adapter\Simple.OData.Client.V3.Adapter.csproj" />
 		<ProjectReference Include="..\Simple.OData.Client.V4.Adapter\Simple.OData.Client.V4.Adapter.csproj" />
 	</ItemGroup>
-	
 </Project>

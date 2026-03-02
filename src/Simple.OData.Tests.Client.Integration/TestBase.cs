@@ -8,7 +8,8 @@ public abstract class TestBase : IDisposable
 {
 	private static readonly HttpClient metadataHttpClient = new();
 
-	protected const string ODataV2ReadWriteUri = "https://services.odata.org/V2/%28S%28readwrite%29%29/odata/OData.svc/";
+	// NOTE: Underlying service url has changed from /odata/OData.svc/ to /OData/OData.svc/
+	protected const string ODataV2ReadWriteUri = "https://services.odata.org/V2/%28S%28readwrite%29%29/OData/OData.svc/";
 	protected const string ODataV3ReadOnlyUri = "https://services.odata.org/V3/OData/OData.svc/";
 	protected const string ODataV3ReadWriteUri = "https://services.odata.org/V3/%28S%28readwrite%29%29/OData/OData.svc/";
 	protected const string ODataV4ReadOnlyUri = "https://services.odata.org/V4/OData/OData.svc/";
@@ -47,7 +48,7 @@ public abstract class TestBase : IDisposable
 		if (serviceUri == ODataV2ReadWriteUri)
 		{
 			var i1 = uri.IndexOf(".org/V");
-			var i2 = uri.IndexOf("/OData/") == -1 ? uri.IndexOf("/odata/") : uri.IndexOf("/OData/");
+			var i2 = uri.IndexOf("/odata/", StringComparison.OrdinalIgnoreCase);
 #if NET7_0_OR_GREATER
 			uri = string.Concat(uri.AsSpan()[..(i1 + 5)], uri.AsSpan(i1 + 8, i2 - i1 - 7), uri.AsSpan(i1 + 5, 2), uri.AsSpan()[i2..]);
 #else
